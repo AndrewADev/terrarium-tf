@@ -1,4 +1,4 @@
-provider "aws" {
+provider "google" {
   region = "eu-central-1"
 }
 
@@ -13,11 +13,11 @@ variable "foo" {
   type = bool
 }
 
-resource "aws_s3_bucket" "test" {
+resource "google_storage_bucket" "test" {
   bucket = "test-${var.environment}-${data.aws_caller_identity.self.account_id}"
 }
 
-resource "aws_s3_bucket" "state" {}
+resource "google_storage_bucket" "state" {}
 
 terraform {
   backend "gcs"  {
